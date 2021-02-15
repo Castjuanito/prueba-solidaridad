@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>todo-board</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/user-profile" fill="clear">
+        <ion-icon name="person-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <app-task-panel [tasks]="pendingTasks" [tittle]="'Pending'"></app-task-panel>
+
+  <ion-button (click) ="addTask()">Add task</ion-button>
+
+</ion-content>
