@@ -26,8 +26,8 @@ export class AuthenticationService {
 
     login(data: User) {
       const body: any = {
-        username: 'pruebajuanito',
-        password: 'ABC123456juan'
+        username: data.username,
+        password: data.password1,
       }
       const url = environment.apiUrl + 'auth/login/';
       const headers = this.GetHttpHeaders().set(
