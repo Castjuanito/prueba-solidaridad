@@ -1,0 +1,8 @@
+<ion-item (click) = "showDetail()">
+  <ion-label>
+    <h2 [ngStyle]="{'color': (task.status === 'overdue')}" >{{ task.name }}</h2>
+    <h3>Status {{ task.status }}</h3>
+    <h3>Priority {{ task.priority }}</h3>
+    <p>{{ task.due_date | date: "short" }}</p>
+  </ion-label>
+</ion-item>

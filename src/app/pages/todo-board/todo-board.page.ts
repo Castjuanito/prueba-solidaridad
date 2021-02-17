@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
 import { Task } from 'src/app/models/task.model';
-
+import { TaskService } from 'src/app/services/task.service';
+import { ModalController } from '@ionic/angular';
+import { PopupCreateTaskComponent } from 'src/app/components/popup-create-task/popup-create-task.component';
 
 @Component({
   selector: 'app-todo-board',
@@ -11,38 +14,50 @@ export class TodoBoardPage implements OnInit {
 
   pendingTasks: Array<Task>;
   overdueTasks: Array<Task>;
+  finishedTasks: Array<Task>;
 
-
-  constructor() { }
+  constructor(
+    private taskService : TaskService,
+    public modalController: ModalController
+  ) { }
 
   ngOnInit() {
 
-
-
-
-    this.pendingTasks = [
-      { pk: '1',
-        name :'task 1',
-        user :'',
-        status : 'pending',
-        created :new Date("Fri Dec 08 2019 07:44:57"),
-        due_date :new Date("Fri Dec 08 2019 07:44:57"),
-        realization_date :new Date(),
-        priority :1},
-
-        { pk: '2',
-        name :'task 2',
-        user :'',
-        status : 'pending',
-        created :new Date(),
-        due_date :new Date(),
-        realization_date :new Date(),
-        priority :1}
-    ];
-  }
-
-  addTask(){
+    this.getTasks();
 
   }
+
+  filterStatus (element : Task, status : String, userId : String) {
+    if (element.status === status && element.user === userId) {
+      return true;
+    }
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: PopupCreateTaskComponent,
+      cssClass: 'my-custom-class'
+    });
+     await modal.present();
+     const { data } = await modal.onDidDismiss();
+    if (data) {
+      this.getTasks();
+    }
+  }
+
+
+  getTasks() {
+
+    this.taskService.getAllTasks().pipe(first())
+    .subscribe((data: Array<Task>) => {
+    const userId =  localStorage.getItem('currentUserId')
+      this.pendingTasks = data.filter(element => this.filterStatus(element,"pending",userId));
+      this.overdueTasks = data.filter(element => this.filterStatus(element,"overdue",userId));
+      this.finishedTasks = data.filter(element => this.filterStatus(element,"finished",userId));
+    },
+    (error) => {console.log(error)});
+
+  }
+
 
 }

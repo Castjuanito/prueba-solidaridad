@@ -1,5 +1,5 @@
-enum Stat {
-  pending = "PENDING",
-  overdue = "OVERDUE",
-  finished = "FINISHED",
+export enum Stat {
+  pending = "pending",
+  overdue = "overdue",
+  finished = "finished",
 }

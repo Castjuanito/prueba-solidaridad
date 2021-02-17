@@ -8,6 +8,8 @@ import { TodoBoardPageRoutingModule } from './todo-board-routing.module';
 
 import { TodoBoardPage } from './todo-board.page';
 import {TaskPanelComponent} from '../../components/task-panel/task-panel.component';
+import {TaskItemComponent} from '../../components/task-item/task-item.component';
+import { PopupCreateTaskComponent } from 'src/app/components/popup-create-task/popup-create-task.component';
 
 
 @NgModule({
@@ -17,6 +19,6 @@ import {TaskPanelComponent} from '../../components/task-panel/task-panel.compone
     IonicModule,
     TodoBoardPageRoutingModule
   ],
-  declarations: [TodoBoardPage, TaskPanelComponent ]
+  declarations: [TodoBoardPage, TaskPanelComponent, TaskItemComponent, PopupCreateTaskComponent ]
 })
 export class TodoBoardPageModule {}

@@ -1,12 +1,13 @@
-import { User } from "./user.model";
+import { Priority } from "./priority.enum";
+import { Stat } from "./status.enum";
 
 export class Task {
   pk?: string;
-  user :string;
+  user? :string;
   name :string;
-  status :string;
+  status :Stat;
   created :Date;
   due_date :Date;
-  realization_date :Date;
-  priority :number;
+  realization_date? :Date;
+  priority : any;
 }

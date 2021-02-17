@@ -10,11 +10,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ErrorInterceptor } from './services/auth/error.interceptor';
 import { JwtInterceptor  } from './services/auth/jwt.interceptor';
+import { PopupEditTaskComponent } from './components/popup-edit-task/popup-edit-task.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,PopupEditTaskComponent],
   entryComponents: [],
   imports: [BrowserModule,
      IonicModule.forRoot(),

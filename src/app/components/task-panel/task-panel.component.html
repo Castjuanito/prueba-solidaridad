@@ -1,7 +1,10 @@
-<p>
-  task-panel works!
-</p>
+<ion-list lines="none">
+  <ion-label> {{tittle}} </ion-label>
 
+  <ng-container *ngFor="let task of tasks">
+    <app-task-item [task]="task"></app-task-item>
+  </ng-container>
+</ion-list>
 
 
 

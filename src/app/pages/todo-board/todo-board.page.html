@@ -11,7 +11,9 @@
 
 <ion-content>
   <app-task-panel [tasks]="pendingTasks" [tittle]="'Pending'"></app-task-panel>
+  <app-task-panel [tasks]="overdueTasks" [tittle]="'Overdue'"></app-task-panel>
+  <app-task-panel [tasks]="finishedTasks" [tittle]="'Finished'"></app-task-panel>
 
-  <ion-button (click) ="addTask()">Add task</ion-button>
+  <ion-button (click) ="presentModal()">Add task</ion-button>
 
 </ion-content>

@@ -11,24 +11,14 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <form #form="ngForm" (ngSubmit)="createTask(form)">
+  <form #form="ngForm" (ngSubmit)="editTask(form)">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col>
           <div text-center>
-            <h3>New Task</h3>
+            <h2>{{task.name}}</h2>
           </div>
           <div padding>
-            <ion-item>
-              <ion-input
-                name="name"
-                type="text"
-                placeholder="Name"
-                ngModel
-                required
-                [(ngModel)]="task.name"
-              ></ion-input>
-            </ion-item>
             <ion-item >
               <ion-select name="status" [(ngModel)]="task.status">
                 <ion-select-option value="pending">pending</ion-select-option>
@@ -42,7 +32,7 @@
                 name="due_date"
                 displayFormat="YYYY/MM/DD"
                 placeholder="Due Date"
-              ></ion-datetime>
+              >{{task.due_date}}</ion-datetime>
             </ion-item>
             <ion-item>
               <ion-select [(ngModel)]="task.priority" name="priority" placeholder="Priority">
@@ -57,7 +47,15 @@
                 name="created"
                 displayFormat="YYYY/MM/DD"
                 placeholder="Created"
-              ></ion-datetime>
+              >{{task.created}}</ion-datetime>
+            </ion-item>
+            <ion-item>
+              <ion-datetime
+                [(ngModel)]="task.realization_date"
+                name="realization_date"
+                displayFormat="YYYY/MM/DD"
+                placeholder="Crealization date"
+              >{{task.created}}</ion-datetime>
             </ion-item>
           </div>
           <div padding>
@@ -66,7 +64,7 @@
               type="submit"
               [disabled]="form.invalid"
               expand="block"
-              >Create</ion-button
+              >Edit</ion-button
             >
           </div>
         </ion-col>

@@ -1,22 +1,15 @@
 import { ChangeDetectionStrategy ,Component, OnInit , Input} from '@angular/core';
 import { Task } from 'src/app/models/task.model';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-task-panel',
   styleUrls: ['./task-panel.component.scss'],
+  templateUrl: './task-panel.component.html',
+
+
   changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
-    <p>
-      {{tittle}}
-    </p>
-    <ion-list>
-    <div *ngFor="let task of tasks">
-    <ion-item>
-    <ion-label>{{task.name}}</ion-label>
-    </ion-item>
-    </div>
-    </ion-list>
-  `
 })
 export class TaskPanelComponent implements OnInit {
 
